@@ -147,8 +147,8 @@ namespace ConsumerMicroservice.Repository
             //BusinessData.BusinessList.Add(updatebusiness);
             _db.consumers.Remove(deleteConsumer);
             _db.businesses.Remove(deleteBusiness);
-            _db.Add(updateConsumer);
-            _db.consumers.businesses.Add(updatebusiness);
+            _db.consumers.Add(updateConsumer);
+            _db.businesses.Add(updatebusiness);
             _db.SaveChanges();
             return true;
         }
