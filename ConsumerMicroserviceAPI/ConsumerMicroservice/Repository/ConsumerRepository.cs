@@ -78,7 +78,7 @@ namespace ConsumerMicroservice.Repository
         public Business GetBusinessById(string id)
         {
             //Business business = BusinessData.BusinessList.FirstOrDefault(b => b.BusinessId.Equals(id));
-            Business business = _db.businesses .Where(t => t.BusinessId == id).FirstOrDefault();
+            Business business = _db.businesses.Where(t => t.BusinessId == id).FirstOrDefault();
             return business;
         }
 
@@ -145,10 +145,10 @@ namespace ConsumerMicroservice.Repository
             //BusinessData.BusinessList.Remove(deleteBusiness);
             //ConsumerData.ConsumerList.Add(updateConsumer);
             //BusinessData.BusinessList.Add(updatebusiness);
-            _db.Remove(deleteConsumer);
-            _db.Remove(deleteBusiness);
+            _db.consumers.Remove(deleteConsumer);
+            _db.businesses.Remove(deleteBusiness);
             _db.Add(updateConsumer);
-            _db.Add(updatebusiness);
+            _db.consumers.businesses.Add(updatebusiness);
             _db.SaveChanges();
             return true;
         }
@@ -199,7 +199,7 @@ namespace ConsumerMicroservice.Repository
                 throw new System.ArgumentException("No such customerid is stored");
             }
             Property viewProperty = GetPropertyById(PropertyId);
-
+            Consumer viewConsumer = GetConsumerById(ConsumerId);
             BusinessPropertyDetails businessProperty = new BusinessPropertyDetails()
             {
                 ConsumerId = ConsumerId,
